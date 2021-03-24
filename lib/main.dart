@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
-      home: idCard(),
+      home: IdCard(),
     ));
 
-class idCard extends StatelessWidget {
+class IdCard extends StatefulWidget {
+  @override
+  _IdCardState createState() => _IdCardState();
+}
+
+class _IdCardState extends State<IdCard> {
+  int playerLevel = 567;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +21,15 @@ class idCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            playerLevel += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -63,7 +79,7 @@ class idCard extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              "567",
+              "$playerLevel",
               style: TextStyle(
                 color: Colors.amberAccent[200],
                 letterSpacing: 2.0,
